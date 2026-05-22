@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Hacker News Test Feed</title>
+    <item>
+      <title>Show HN: Intel pipeline ingest prototype</title>
+      <link>https://example.com/hn/show-hn-1</link>
+      <description>A minimal RSS fixture for testing Hacker News style entries with short summaries.</description>
+      <pubDate>Wed, 21 May 2026 11:00:00 GMT</pubDate>
+    </item>
+  </channel>
+</rss>

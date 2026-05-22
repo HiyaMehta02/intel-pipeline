@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>The Hacker News Test Feed</title>
+    <item>
+      <title>Critical vulnerability in example library</title>
+      <link>https://example.com/cyber/article-1</link>
+      <description>&lt;p&gt;Security researchers disclosed a critical remote code execution flaw affecting millions of deployments. Patch immediately.&lt;/p&gt;</description>
+      <pubDate>Wed, 21 May 2026 10:00:00 GMT</pubDate>
+    </item>
+  </channel>
+</rss>

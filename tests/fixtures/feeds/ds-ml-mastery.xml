@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Machine Learning Mastery Test Feed</title>
+    <item>
+      <title>How to evaluate embedding models for retrieval</title>
+      <link>https://example.com/ml/embedding-eval</link>
+      <description>&lt;p&gt;Practical guide to benchmarking embedding quality on domain-specific corpora before production deployment.&lt;/p&gt;</description>
+      <pubDate>Wed, 21 May 2026 12:00:00 GMT</pubDate>
+    </item>
+  </channel>
+</rss>

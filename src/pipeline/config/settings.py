@@ -31,8 +31,11 @@ class Settings(BaseSettings):
     sources_path: Path | None = None
     enable_near_dedup: bool = False
     max_normalized_chars: int = Field(default=50_000, ge=1000)
+    ingest_http_timeout: float = Field(default=30.0, gt=0)
+    ingest_fetch_linked_pages: bool = True
+    ingest_fixtures_dir: Path | None = None
 
-    @field_validator("project_root", "data_dir", "sources_path", mode="before")
+    @field_validator("project_root", "data_dir", "sources_path", "ingest_fixtures_dir", mode="before")
     @classmethod
     def resolve_paths(cls, value: Path | str | None) -> Path | None:
         if value is None:
@@ -53,6 +56,11 @@ class Settings(BaseSettings):
         if self.data_dir.is_absolute():
             return self.data_dir
         return (self.project_root / self.data_dir).resolve()
+
+    def resolved_ingest_fixtures_dir(self) -> Path:
+        if self.ingest_fixtures_dir is not None:
+            return self.ingest_fixtures_dir
+        return self.project_root / "tests" / "fixtures" / "feeds"
 
 
 @lru_cache

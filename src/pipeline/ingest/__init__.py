@@ -1,1 +1,25 @@
-"""Source adapters, normalization, and deduplication (Sprint 1 Steps 5–6)."""
+"""Ingestion: adapters, normalization, deduplication."""
+
+from pipeline.ingest.dedup import DedupService
+from pipeline.ingest.normalize import NormalizationError, extract_text, normalize_item
+from pipeline.ingest.processor import IngestProcessor
+from pipeline.ingest.results import (
+    DedupAction,
+    DedupDecision,
+    SkippedDocument,
+    SourceIngestResult,
+    SourceProcessStatus,
+)
+
+__all__ = [
+    "DedupService",
+    "DedupAction",
+    "DedupDecision",
+    "IngestProcessor",
+    "NormalizationError",
+    "SkippedDocument",
+    "SourceIngestResult",
+    "SourceProcessStatus",
+    "extract_text",
+    "normalize_item",
+]

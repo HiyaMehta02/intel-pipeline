@@ -19,7 +19,7 @@ After the justification block, work **STOPS** until the owner replies **"Proceed
 | 1 | Bootstrap + layout | **Complete** (2026-05-21) |
 | 2 | Models + Settings | **Complete** (2026-05-21) |
 | 3 | Storage protocol + local backend | **Complete** (2026-05-21) |
-| 4 | DB schema + repository | Pending |
+| 4 | DB schema + repository | **Complete** (2026-05-21) |
 | 5 | Adapters + normalize + dedup | Pending |
 | 6 | Ingest service + CLI | Pending |
 | 7 | Integration tests + Sprint 1 sign-off | Pending |

@@ -4,7 +4,7 @@ Containerized AI Knowledge Pipeline: ingest technical intelligence (AI, Data Sci
 
 ## Status
 
-**Sprint 1 — Steps 1–3 complete:** bootstrap, models/settings, local `StorageBackend` (ADR-001). See [docs/AI_KNOWLEDGE_PIPELINE_BLUEPRINT.md](docs/AI_KNOWLEDGE_PIPELINE_BLUEPRINT.md) for architecture and testing guide.
+**Sprint 1 — Steps 1–4 complete:** bootstrap, models/settings, storage (ADR-001), SQLite metadata (SQLAlchemy Core). See [docs/AI_KNOWLEDGE_PIPELINE_BLUEPRINT.md](docs/AI_KNOWLEDGE_PIPELINE_BLUEPRINT.md) for architecture and testing guide.
 
 ## Requirements
 

@@ -1,0 +1,26 @@
+# Source registry for ingestion (Sprint 1+).
+# domain_tag must be one of: AI | DataScience | Cybersecurity
+
+version: 1
+
+sources:
+  - id: cyber-thehackernews
+    name: The Hacker News
+    type: rss
+    url: https://thehackernews.com/feeds/posts/default
+    domain_tag: Cybersecurity
+    enabled: true
+
+  - id: tech-hackernews
+    name: Hacker News
+    type: rss
+    url: https://news.ycombinator.com/rss
+    domain_tag: AI
+    enabled: true
+
+  - id: ds-ml-mastery
+    name: Machine Learning Mastery
+    type: rss
+    url: https://machinelearningmastery.com/feed/
+    domain_tag: DataScience
+    enabled: true

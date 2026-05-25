@@ -1,4 +1,4 @@
--- Sprint 1 initial schema (SQLite; Postgres-compatible types as TEXT/INTEGER)
+-- Sprint 1 initial schema (SQLite, Postgres-compatible TEXT/INTEGER types)
 
 CREATE TABLE IF NOT EXISTS pipeline_runs (
     run_id TEXT PRIMARY KEY,

@@ -20,11 +20,7 @@ logger = logging.getLogger(__name__)
 
 
 class IngestProcessor:
-    """
-    Process configured sources without persisting (Step 5).
-
-    Step 6 will add storage, DB, and CLI wiring.
-    """
+    """Fetch, normalize, and deduplicate items from a source (persistence in IngestRunner)."""
 
     def __init__(
         self,
@@ -37,7 +33,7 @@ class IngestProcessor:
         self._dedup = dedup
         self._use_fixtures = use_fixtures
 
-    def process_source(self, source: SourceConfig) -> SourceIngestResult:
+    def process_source(self, source: SourceConfig, *, max_items: int | None = None) -> SourceIngestResult:
         result = SourceIngestResult(source_id=source.id, status=SourceProcessStatus.SUCCESS)
         adapter = adapter_for_source(
             source,
@@ -47,6 +43,8 @@ class IngestProcessor:
 
         try:
             raw_items = adapter.fetch(source)
+            if max_items is not None:
+                raw_items = raw_items[:max_items]
             result.items_fetched = len(raw_items)
         except Exception as exc:
             logger.exception("Source fetch failed", extra={"source_id": source.id})

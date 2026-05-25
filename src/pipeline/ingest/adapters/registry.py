@@ -19,10 +19,7 @@ def build_adapter(
         if source_type != SourceType.RSS:
             msg = f"Fixture mode only supports RSS sources, got {source_type}"
             raise ValueError(msg)
-        return FixtureAdapter(
-            settings.resolved_ingest_fixtures_dir(),
-            fetch_linked_pages=False,
-        )
+        return FixtureAdapter(settings.resolved_ingest_fixtures_dir())
 
     if source_type == SourceType.RSS:
         return RssAdapter(

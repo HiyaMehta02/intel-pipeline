@@ -21,5 +21,5 @@ After the justification block, work **STOPS** until the owner replies **"Proceed
 | 3 | Storage protocol + local backend | **Complete** (2026-05-21) |
 | 4 | DB schema + repository | **Complete** (2026-05-21) |
 | 5 | Adapters + normalize + dedup | **Complete** (2026-05-21) |
-| 6 | Ingest service + CLI | Pending |
-| 7 | Integration tests + Sprint 1 sign-off | Pending |
+| 6 | Ingest service + CLI | **Complete** (2026-05-21) |
+| 7 | Integration tests + Sprint 1 sign-off | **Complete** (2026-05-21) |

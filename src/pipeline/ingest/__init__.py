@@ -3,6 +3,7 @@
 from pipeline.ingest.dedup import DedupService
 from pipeline.ingest.normalize import NormalizationError, extract_text, normalize_item
 from pipeline.ingest.processor import IngestProcessor
+from pipeline.ingest.runner import IngestRunner, IngestRunSummary
 from pipeline.ingest.results import (
     DedupAction,
     DedupDecision,
@@ -16,6 +17,8 @@ __all__ = [
     "DedupAction",
     "DedupDecision",
     "IngestProcessor",
+    "IngestRunner",
+    "IngestRunSummary",
     "NormalizationError",
     "SkippedDocument",
     "SourceIngestResult",

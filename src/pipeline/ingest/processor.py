@@ -33,7 +33,12 @@ class IngestProcessor:
         self._dedup = dedup
         self._use_fixtures = use_fixtures
 
-    def process_source(self, source: SourceConfig, *, max_items: int | None = None) -> SourceIngestResult:
+    def process_source(
+        self,
+        source: SourceConfig,
+        *,
+        max_items: int | None = None,
+    ) -> SourceIngestResult:
         result = SourceIngestResult(source_id=source.id, status=SourceProcessStatus.SUCCESS)
         adapter = adapter_for_source(
             source,

@@ -5,13 +5,14 @@ from __future__ import annotations
 import json
 from dataclasses import dataclass
 from typing import Any
+
 from sqlalchemy import select
 from sqlalchemy.engine import Connection
 from sqlalchemy.exc import IntegrityError
 
 from pipeline.db import schema
 from pipeline.db.timeutil import to_iso, utc_now_iso
-from pipeline.models import DomainTag, PipelineRun, RawDocument, RunStatus
+from pipeline.models import PipelineRun, RawDocument, RunStatus
 from pipeline.storage.artifacts import StoredArtifact
 
 
@@ -62,9 +63,13 @@ class PipelineRunRepository:
         )
 
     def get(self, run_id: str) -> dict[str, Any] | None:
-        row = self._conn.execute(
-            schema.pipeline_runs.select().where(schema.pipeline_runs.c.run_id == run_id),
-        ).mappings().first()
+        row = (
+            self._conn.execute(
+                schema.pipeline_runs.select().where(schema.pipeline_runs.c.run_id == run_id),
+            )
+            .mappings()
+            .first()
+        )
         return dict(row) if row else None
 
 
@@ -110,9 +115,13 @@ class DocumentRepository:
         return row is not None
 
     def get_by_hash(self, content_hash: str) -> dict[str, Any] | None:
-        row = self._conn.execute(
-            schema.documents.select().where(schema.documents.c.content_hash == content_hash),
-        ).mappings().first()
+        row = (
+            self._conn.execute(
+                schema.documents.select().where(schema.documents.c.content_hash == content_hash),
+            )
+            .mappings()
+            .first()
+        )
         return dict(row) if row else None
 
     def count(self) -> int:
@@ -147,11 +156,15 @@ class IngestEventRepository:
         )
 
     def list_for_run(self, run_id: str) -> list[IngestEventRecord]:
-        rows = self._conn.execute(
-            schema.ingest_events.select()
-            .where(schema.ingest_events.c.run_id == run_id)
-            .order_by(schema.ingest_events.c.id),
-        ).mappings().all()
+        rows = (
+            self._conn.execute(
+                schema.ingest_events.select()
+                .where(schema.ingest_events.c.run_id == run_id)
+                .order_by(schema.ingest_events.c.id),
+            )
+            .mappings()
+            .all()
+        )
         return [
             IngestEventRecord(
                 run_id=row["run_id"],

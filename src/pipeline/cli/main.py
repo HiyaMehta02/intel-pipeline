@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
+from typing import Annotated
 from uuid import uuid4
 
 import typer
@@ -27,31 +28,32 @@ def _root() -> None:
 
 @app.command("ingest")
 def ingest(
-    sources: Path = typer.Option(
-        None,
-        "--sources",
-        "-s",
-        help="Path to sources.yaml (default: configs/sources.yaml).",
-        exists=True,
-        dir_okay=False,
-        readable=True,
-    ),
-    run_id: str = typer.Option(
-        None,
-        "--run-id",
-        help="UUID for this ingest run (default: random UUID4).",
-    ),
-    fixtures: bool = typer.Option(
-        False,
-        "--fixtures",
-        help="Use tests/fixtures/feeds instead of live HTTP (CI/local dev).",
-    ),
-    limit: int | None = typer.Option(
-        None,
-        "--limit",
-        help="Max RSS items per source.",
-        min=1,
-    ),
+    sources: Annotated[
+        Path | None,
+        typer.Option(
+            "--sources",
+            "-s",
+            help="Path to sources.yaml (default: configs/sources.yaml).",
+            exists=True,
+            dir_okay=False,
+            readable=True,
+        ),
+    ] = None,
+    run_id: Annotated[
+        str | None,
+        typer.Option("--run-id", help="UUID for this ingest run (default: random UUID4)."),
+    ] = None,
+    fixtures: Annotated[
+        bool,
+        typer.Option(
+            "--fixtures",
+            help="Use tests/fixtures/feeds instead of live HTTP (CI/local dev).",
+        ),
+    ] = False,
+    limit: Annotated[
+        int | None,
+        typer.Option("--limit", help="Max RSS items per source.", min=1),
+    ] = None,
 ) -> None:
     """Ingest configured RSS sources into local storage and SQLite."""
     settings = get_settings()
@@ -85,12 +87,14 @@ def ingest(
 
 @app.command("validate-raw")
 def validate_raw(
-    path: Path = typer.Argument(
-        ...,
-        help="Directory to scan (e.g. data/raw).",
-        exists=True,
-        file_okay=False,
-    ),
+    path: Annotated[
+        Path,
+        typer.Argument(
+            help="Directory to scan (e.g. data/raw).",
+            exists=True,
+            file_okay=False,
+        ),
+    ],
 ) -> None:
     """Validate on-disk raw JSON files against the RawDocument schema."""
     files = sorted(path.rglob("*.json"))

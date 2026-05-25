@@ -32,7 +32,9 @@ class RssAdapter(SourceAdapter):
             self._client = httpx.Client(
                 timeout=self._timeout,
                 follow_redirects=True,
-                headers={"User-Agent": "intel-pipeline/0.1 (+https://github.com/HiyaMehta02/intel-pipeline)"},
+                headers={
+                    "User-Agent": "intel-pipeline/0.1 (+https://github.com/HiyaMehta02/intel-pipeline)",
+                },
             )
         return self._client
 

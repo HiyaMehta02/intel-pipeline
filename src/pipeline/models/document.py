@@ -37,7 +37,10 @@ class RawDocument(BaseModel):
     """Normalized, persisted document (JSON artifact + DB row)."""
 
     id: UUID = Field(default_factory=uuid4)
-    content_hash: str = Field(min_length=CONTENT_HASH_HEX_LENGTH, max_length=CONTENT_HASH_HEX_LENGTH)
+    content_hash: str = Field(
+        min_length=CONTENT_HASH_HEX_LENGTH,
+        max_length=CONTENT_HASH_HEX_LENGTH,
+    )
     source_id: str = Field(min_length=1)
     source_name: str = Field(min_length=1)
     domain_tag: DomainTag

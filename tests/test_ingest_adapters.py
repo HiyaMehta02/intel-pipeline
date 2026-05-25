@@ -17,7 +17,7 @@ def test_rss_adapter_fetches_and_parses() -> None:
             200,
             text="""<?xml version="1.0"?><rss><channel>
             <item><title>Mock Post</title><link>https://example.com/p/1</link>
-            <description>Long enough description text for normalization testing without extra HTTP.</description>
+            <description>Long enough description for normalization tests.</description>
             </item></channel></rss>""",
         ),
     )

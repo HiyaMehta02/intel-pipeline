@@ -6,8 +6,8 @@ from pathlib import Path
 
 from pipeline.db import DocumentRepository, apply_migrations, create_db_engine
 from pipeline.ingest.dedup import DedupService
-from pipeline.ingest.results import DedupAction
 from pipeline.ingest.normalize import normalize_item
+from pipeline.ingest.results import DedupAction
 from pipeline.models import DomainTag, RawItem
 from pipeline.storage import LocalFilesystemBackend
 

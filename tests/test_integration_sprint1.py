@@ -11,8 +11,12 @@ from typer.testing import CliRunner
 
 from pipeline.cli.main import app
 from pipeline.config.settings import get_settings
-from pipeline.db import create_db_engine, apply_migrations
-from pipeline.db.repositories import DocumentRepository, IngestEventRepository, PipelineRunRepository
+from pipeline.db import apply_migrations, create_db_engine
+from pipeline.db.repositories import (
+    DocumentRepository,
+    IngestEventRepository,
+    PipelineRunRepository,
+)
 from pipeline.ingest.runner import IngestRunner
 from pipeline.models import RawDocument
 

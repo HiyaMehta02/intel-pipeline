@@ -35,7 +35,13 @@ class Settings(BaseSettings):
     ingest_fetch_linked_pages: bool = True
     ingest_fixtures_dir: Path | None = None
 
-    @field_validator("project_root", "data_dir", "sources_path", "ingest_fixtures_dir", mode="before")
+    @field_validator(
+        "project_root",
+        "data_dir",
+        "sources_path",
+        "ingest_fixtures_dir",
+        mode="before",
+    )
     @classmethod
     def resolve_paths(cls, value: Path | str | None) -> Path | None:
         if value is None:
